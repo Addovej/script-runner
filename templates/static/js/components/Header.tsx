@@ -1,6 +1,11 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 
-export default class Header extends Component {
+interface Props {
+    logo: string;
+}
+
+export default class Header extends React.Component <Props> {
+
     render() {
         return (
             <div className='header-page'>

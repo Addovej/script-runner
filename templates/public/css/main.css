@@ -17,3 +17,24 @@ h1, h2, h3, h4, h5, h6, p, ul {
     margin: 0;
     padding: 0;
 }
+
+.error h1, .error p {
+    text-align: center;
+}
+
+.error h1 {
+    font-size: 100px;
+}
+
+.error p {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.error a {
+    color: darkmagenta;
+}
+
+.page-header {
+    margin-top: 1.5em;
+}

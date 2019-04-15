@@ -1,7 +1,11 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import Header from './Header';
 
-export default class Home extends Component {
+
+interface Props {
+}
+
+export default class Home extends React.Component <Props> {
     render() {
         return (
             <div className='container'>
