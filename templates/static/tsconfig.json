@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "es6",
     "removeComments": true,
     "preserveConstEnums": true,
     "moduleResolution": "node",
@@ -9,9 +9,7 @@
     "noImplicitAny": false,
     "noEmitOnError": false,
     "jsx": "react",
-    "outDir": "dist",
-    "declaration": true,
-    "rootDir": "js"
+    "declaration": false
   },
   "exclude": [
     "dist"

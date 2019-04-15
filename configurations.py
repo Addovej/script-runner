@@ -4,6 +4,7 @@ class BaseCongig(object):
     '''
     DEBUG = True
     TESTING = False
+    ROOT_PATH = '/home/addovej/rootfolder'
 
 
 class ProductionConfig(BaseCongig):
@@ -11,6 +12,7 @@ class ProductionConfig(BaseCongig):
     Production specific config
     """
     DEBUG = False
+    ROOT_PATH = '/home/addovej/rootfolder'
 
 
 class DevelopmentConfig(BaseCongig):
@@ -19,3 +21,4 @@ class DevelopmentConfig(BaseCongig):
     """
     DEBUG = True
     TESTING = True
+    ROOT_PATH = '/home/addovej/rootfolder'

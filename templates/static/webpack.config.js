@@ -1,13 +1,17 @@
+let path = require('path');
 const webpack = require('webpack');
 const resolve = require('path').resolve;
 
+var basePath = __dirname;
+
 module.exports = {
-    entry: [
-        __dirname + '/js/index.tsx',
-    ],
-    resolve: {
-        extensions: ['.js', '.jsx', '.tsx', '.css']
+    context: path.join(basePath, 'js'),
+    entry: {
+        app: './index.tsx',
     },
+    // entry: [
+    //     __dirname + '/js/index.tsx',
+    // ],
     module: {
         rules: [{
             test: /\.tsx?$/,
@@ -23,11 +27,15 @@ module.exports = {
     ],
     output: {
         filename: 'bundle.js',
-        path: resolve('../public'),
+        path: path.join(basePath, '../public'),
         publicPath: resolve('../public'),
         library: 'react-xterm',
         libraryTarget: 'umd'
-    }
+    },
+    devtool: 'inline-source-map',
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.png']
+    },
 };
 
 // const resolve = require('path').resolve;

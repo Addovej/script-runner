@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_cors import CORS
 
 from templates.app import app_blueprint
 
@@ -8,6 +9,7 @@ app = Flask(
     template_folder='./templates/static'
 )
 app.config.from_object('configurations.DevelopmentConfig')
+CORS(app)
 app.register_blueprint(app_blueprint)
 
 

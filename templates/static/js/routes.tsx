@@ -1,17 +1,23 @@
 import * as React from 'react';
-import { Route, Switch, HashRouter } from 'react-router-dom';
-import Home from './components/Home';
+import {Route, Switch, HashRouter} from 'react-router-dom';
+import {App} from './app';
+import {About} from './components/about';
+import FilesPage from './components/files/page';
+// import Home from './components/home';
 // import XTerminal from "./components/Terminal";
 
 export const AppRouter: React.FunctionComponent<{}> = () => {
-  return (
-    <HashRouter>
-      <div className="container-fluid">
-        <Route path="/" component={Home} />
-        <Switch>
-          {/*<Route path="/terminal" component={XTerminal} />*/}
-        </Switch>
-      </div>
-    </HashRouter>
-  );
+    return (
+        <HashRouter>
+            <div className="container-fluid">
+                <Route path="/" component={App}/>
+                <Switch>
+                    {/*<Route path="/" component={Home}/>*/}
+                    <Route path="/about" component={About} />
+                    <Route path="/files" component={FilesPage}/>
+                    {/*<Route path="/terminal" component={XTerminal} />*/}
+                </Switch>
+            </div>
+        </HashRouter>
+    );
 };

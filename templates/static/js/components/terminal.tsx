@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {ResizableBox} from 'react-resizable';
 import * as throttle from 'lodash.throttle';
 import {XTerm, Terminal} from 'react-xterm';
-// import Header from './Header';
+// import Header from './header';
 
 interface IState {
 }
