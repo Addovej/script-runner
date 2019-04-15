@@ -52,6 +52,31 @@ h1, h2, h3, h4, h5, h6, p, ul {
     display: block;
 }
 
-.files-row {
+.files-row-explorer {
     width: 25%;
+    display: inline-block;
+}
+
+.files-viewer pre {
+    height: 550px;
+    overflow: scroll;
+    display: block;
+}
+
+.files-row-viewer {
+    float: right;
+    width: 50vw;
+    display: inline-block;
+}
+
+.file-btn {
+    text-align: left;
+}
+
+.file-back-btn, .file-close-btn {
+    float: right;
+}
+
+.h2-file-header {
+    height: 100px;
 }

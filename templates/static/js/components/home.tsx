@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Header from './header';
-import NestedEditableDemo from './filebrowser';
 import { filesystemAPI } from '../api';
 
 
@@ -28,8 +27,6 @@ export default class Home extends React.Component <Props, State> {
         return (
             <div className='container'>
                 <h1>{this.state.message}</h1>
-                <NestedEditableDemo
-                />
             </div>
         )
     }
