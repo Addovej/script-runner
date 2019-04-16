@@ -2,7 +2,11 @@ from os import listdir
 from os.path import isfile, join
 
 
-def get_dir_content(path=''):
+def get_file_ext(file):
+    return file.split('.').pop()
+
+
+def get_dir_content(path='', files_ext=[]):
     listing = {
         'folders': [],
         'files': [],
@@ -20,7 +24,8 @@ def get_dir_content(path=''):
             path_file = join(path, item)
             f = {'name': item, 'path': path_file, 'isFolder': False}
             if isfile(path_file):
-                listing['files'].append(f)
+                if get_file_ext(item) in files_ext:
+                    listing['files'].append(f)
             else:
                 f.update({'isFolder': True})
                 listing['folders'].append(f)
@@ -36,3 +41,13 @@ def get_file_content(path=''):
             return data
 
     return ''
+
+
+def log_file(file, message=''):
+    file = open(file, 'a+')
+    try:
+        file.write(message)
+    except Exception as e:
+        print(e)
+    finally:
+        file.close()

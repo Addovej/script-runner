@@ -22,3 +22,7 @@ class DevelopmentConfig(BaseCongig):
     DEBUG = True
     TESTING = True
     ROOT_PATH = '/home/addovej/rootfolder'
+    CELERY_RESULT_BACKEND = 'test'
+    CELERY_BROKER_URL = 'test'
+    LOG_FILE = '/home/addovej/rootfolder/log.txt'
+    EXEC_FILE_EXT = ['py', 'sh']

@@ -12,10 +12,10 @@ interface State {
     previousDir: string;
     fileName: string;
     fileContent: string;
+    runMessage: string;
 }
 
 interface Props {
-
 }
 
 export default class FilesPage extends React.Component<Props, State> {
@@ -27,7 +27,8 @@ export default class FilesPage extends React.Component<Props, State> {
             currentDir: '',
             previousDir: '',
             fileName: '',
-            fileContent: null
+            fileContent: null,
+            runMessage: ''
         };
     }
 
@@ -61,8 +62,16 @@ export default class FilesPage extends React.Component<Props, State> {
             fileName: path,
             fileContent: result.data.content
         });
-        return result.data.content
     };
+
+    runScript = async (path) => {
+        // TODO: need fix it
+        const result = await filesystemAPI.run_script(this.state.fileName.replace(/\//g, '-'));
+        this.setState({
+            runMessage: result.data.message
+        });
+    };
+
 
     public render() {
         const {currentDir, fileName, fileContent, rootDir, previousDir, files} = this.state;
@@ -98,8 +107,9 @@ export default class FilesPage extends React.Component<Props, State> {
                 {fileContent != null && <FileViewer
                     text={fileContent}
                     currentFile={fileName}
-                    onClick={() => this.setState({fileContent: null, fileName: null})}
+                    onCloseClick={() => this.setState({fileContent: null, fileName: null})}
                 />}
+                {fileContent != null && <button onClick={this.runScript}>Run</button>}
             </div>
         );
     }

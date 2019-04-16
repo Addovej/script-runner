@@ -16,9 +16,19 @@ const get_file_content = (path) => {
     return http.get(`/filecontent/${path}`)
 };
 
+const get_logs = () => {
+    return http.get(`/logs`)
+};
+
+const run_script = (path) => {
+    return http.post(`/run-script/${path}`)
+};
+
 export const filesystemAPI = {
     get_test,
     get_root_folder,
     get_folder,
-    get_file_content
+    get_file_content,
+    get_logs,
+    run_script
 };
