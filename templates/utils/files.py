@@ -6,7 +6,7 @@ def get_file_ext(file):
     return file.split('.').pop()
 
 
-def get_dir_content(path='', files_ext=[]):
+def get_dir_content(path='', files_ext=list):
     listing = {
         'folders': [],
         'files': [],

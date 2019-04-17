@@ -31,8 +31,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "history": "^4.9.0",
-    "react-highlight": "^0.12.0",
+    "prismjs": "^1.16.0",
     "react-router-dom": "^5.0.0",
+    "react-simple-code-editor": "^0.9.10",
     "react-table": "^6.9.2",
     "react-xterm": "^2.0.4"
   }

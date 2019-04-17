@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Route, Switch, HashRouter} from 'react-router-dom';
 import {App} from './app';
-import {About} from './components/about';
 import FilesPage from './components/files/page';
 import LogsPage from './components/files/logPage';
 // import Home from './components/home';
@@ -14,7 +13,6 @@ export const AppRouter: React.FunctionComponent<{}> = () => {
                 <Route path="/" component={App}/>
                 <Switch>
                     {/*<Route path="/" component={Home}/>*/}
-                    <Route path="/about" component={About} />
                     <Route path="/files" component={FilesPage}/>
                     <Route path="/logs" component={LogsPage}/>
                     {/*<Route path="/terminal" component={XTerminal} />*/}

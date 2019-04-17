@@ -3,7 +3,7 @@ import {FileEntity} from '../../model';
 import {filesystemAPI} from '../../api';
 import {FileHeader} from './fileHeader';
 import {FileRow} from './fileRow';
-import {FileViewer} from './fileViewer';
+import FileViewer from './fileViewer';
 
 interface State {
     files: FileEntity[];
