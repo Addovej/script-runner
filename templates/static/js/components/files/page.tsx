@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {MDBContainer, MDBRow, MDBCol, MDBScrollbar} from "mdbreact";
 import {FileEntity} from '../../model';
 import {filesystemAPI} from '../../api';
 import {FileHeader} from './fileHeader';
@@ -57,6 +58,7 @@ export default class FilesPage extends React.Component<Props, State> {
 
     getFileContent = async (path) => {
         // TODO: need fix it
+        this.setState({fileContent: null, fileName: null});
         const result = await filesystemAPI.get_file_content(path.replace(/\//g, '-'));
         this.setState({
             fileName: path,
@@ -75,42 +77,50 @@ export default class FilesPage extends React.Component<Props, State> {
 
     public render() {
         const {currentDir, fileName, fileContent, rootDir, previousDir, files} = this.state;
+
         return (
-            <div>
-                <div className="files-row-explorer">
-                    <h2 className='h2-file-header'>Current directory: {currentDir}</h2>
-                    <div>
-                        <button
-                            onClick={e => this.getFolder(previousDir)}
-                            className='file-back-btn btn btn-secondary'
-                            disabled={!previousDir || currentDir == rootDir}
-                        >
-                            Back
-                        </button>
-                    </div>
-                    <table className="table file-table">
-                        <thead>{FileHeader}</thead>
-                        <tbody>
-                        {
-                            files.map(
-                                (file) => <FileRow
-                                    file={file}
-                                    key={file.path}
-                                    handleFolderOnClick={this.getFolder}
-                                    handleFileOnClick={this.getFileContent}
-                                />
-                            )
-                        }
-                        </tbody>
-                    </table>
-                </div>
-                {fileContent != null && <FileViewer
-                    text={fileContent}
-                    currentFile={fileName}
-                    onCloseClick={() => this.setState({fileContent: null, fileName: null})}
-                />}
-                {fileContent != null && <button onClick={this.runScript}>Run</button>}
-            </div>
+            <MDBContainer fluid>
+                <MDBRow className="main-content">
+                    <MDBCol md="5">
+                        <div className="files-row-explorer">
+                            <h2 className='h2-file-header'>Current directory: {currentDir}</h2>
+                            <div>
+                                <button
+                                    onClick={e => this.getFolder(previousDir)}
+                                    className='file-back-btn btn btn-primary'
+                                    disabled={!previousDir || currentDir == rootDir}
+                                >
+                                    Back
+                                </button>
+                            </div>
+                            <table className="table file-table">
+                                <thead>{FileHeader}</thead>
+                                <tbody className="scrollbar">
+                                {
+                                    files.map(
+                                        (file) => <FileRow
+                                            file={file}
+                                            key={file.path}
+                                            handleFolderOnClick={this.getFolder}
+                                            handleFileOnClick={this.getFileContent}
+                                        />
+                                    )
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </MDBCol>
+                    <MDBCol md="1"> </MDBCol>
+                    <MDBCol md="6">
+                        {fileContent != null && <FileViewer
+                            text={fileContent}
+                            currentFile={fileName}
+                            onCloseClick={() => this.setState({fileContent: null, fileName: null})}
+                            onRunClick={this.runScript}
+                        />}
+                    </MDBCol>
+                </MDBRow>
+            </MDBContainer>
         );
     }
 }

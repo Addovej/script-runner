@@ -34,7 +34,7 @@ export default class LogsPage extends React.Component<Props, State> {
         const {fileContent} = this.state;
         return (
             <div>
-                <div style={{height: '550px', overflow: 'scroll', display: 'block'}} className='file-viewer'>
+                <div style={{height: '550px', overflow: 'scroll', display: 'block'}} className='file-viewer scrollbar'>
                     <Editor
                         value={fileContent}
                         onValueChange={() => {}}

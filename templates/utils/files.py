@@ -20,7 +20,7 @@ def get_dir_content(path='', files_ext=list):
         return listing
 
     if folder_content:
-        for item in folder_content:
+        for item in sorted(folder_content):
             path_file = join(path, item)
             f = {'name': item, 'path': path_file, 'isFolder': False}
             if isfile(path_file):
@@ -43,10 +43,10 @@ def get_file_content(path=''):
     return ''
 
 
-def log_file(file, message=''):
-    file = open(file, 'a+')
+def write_file(path, mode='a+', content=''):
+    file = open(path, mode)
     try:
-        file.write(message)
+        file.write(content)
     except Exception as e:
         print(e)
     finally:

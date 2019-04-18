@@ -13,7 +13,7 @@ export const FileRow: React.FunctionComponent<Props> = ({file, handleFolderOnCli
         <tr>
             <td className='file-td'>
                 <button
-                    className='file-btn btn btn-secondary btn-lg btn-block btn-outline-secondary'
+                    className='file-btn btn btn-primary btn-lg btn-block btn-outline-primary'
                     key={file.path}
                     onDoubleClick={e => file.isFolder ? handleFolderOnClick(file.path) : handleFileOnClick(file.path)}
                 >

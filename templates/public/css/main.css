@@ -37,14 +37,35 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 .navbar-icon {
     height: 150px;
+    margin-right: 1.5em;
 }
 
 .page-header {
     margin-top: 1.5em;
 }
 
+.main-content {
+    margin-top: 1.5em;
+}
+
+.scrollbar {
+    overflow: scroll;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #4285F4;
+}
+
 .file-table td, .file-table th {
-    width: 25vw;
+    width: 40vw;
     padding: .75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
@@ -52,18 +73,11 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 .file-table tbody {
     height: 550px;
-    overflow: scroll;
     display: block;
-}
-
-.files-row-explorer {
-    width: 25%;
-    display: inline-block;
 }
 
 .files-viewer pre {
     height: 550px;
-    overflow: scroll;
     display: block;
 }
 

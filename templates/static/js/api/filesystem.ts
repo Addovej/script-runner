@@ -24,11 +24,16 @@ const run_script = (path) => {
     return http.post(`/run-script/${path}`)
 };
 
+const save_file = (path, content) => {
+    return http.post(`/write-file`, {path: path, content: content})
+};
+
 export const filesystemAPI = {
     get_test,
     get_root_folder,
     get_folder,
     get_file_content,
     get_logs,
-    run_script
+    run_script,
+    save_file
 };

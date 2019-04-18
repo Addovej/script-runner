@@ -1,16 +1,17 @@
+import json
 import subprocess
 from datetime import datetime as dt
 from os.path import isfile, isdir
 
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, request
 from flask import current_app as app
 
-from templates.utils import get_dir_content, get_file_content, log_file, get_file_ext
+from templates.utils import get_dir_content, get_file_content, write_file, get_file_ext
 
 app_blueprint = Blueprint('app', __name__)
 ext_map = {
     'py': 'python3',
-    'bash': 'bash'
+    'sh': 'bash'
 }
 
 
@@ -75,9 +76,9 @@ def run_script(path):
                 except Exception as e:
                     print(e)
                 else:
-                    log_file(
-                        app.config.get('LOG_FILE'),
-                        '{} - {}\n'.format(dt.now().strftime('%Y-%m-%d %H:%M:%S'), file_path)
+                    write_file(
+                        path=app.config.get('LOG_FILE'),
+                        content='{} - {}\n'.format(dt.now().strftime('%Y-%m-%d %H:%M:%S'), file_path)
                     )
                     print(out.decode('utf-8'))
                     print(err.decode('utf-8'))
@@ -87,6 +88,25 @@ def run_script(path):
     # script_run.delay(path.replace('-', '/'))
     script_run(path.replace('-', '/'))
     return jsonify({'message': 'Script ({}) was run success.'.format(path.replace('-', '/'))})
+
+
+@app_blueprint.route('/write-file', methods=['POST'])
+def write_file_r():
+    try:
+        data = json.loads(request.data)
+    except Exception as e:
+        return jsonify({'message': 'Error: {}'.format(str(e))}), 400
+    else:
+        path = data.get('path')
+        content = data.get('content')
+
+    if not path or not content:
+        return jsonify({'message': 'Invalid data: path: {}, content: {}.'.format(path, content)}), 422
+
+    if isfile(path):
+        write_file(path, 'w', content)
+
+    return jsonify({'message': 'Script ({}) was updated success.'.format(path)})
 
 
 @app_blueprint.route('/test', methods=['GET'])
