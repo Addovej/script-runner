@@ -34,6 +34,7 @@
     "history": "^4.9.0",
     "mdbreact": "^4.13.0",
     "prismjs": "^1.16.0",
+    "react-iframe": "^1.8.0",
     "react-router-dom": "^5.0.0",
     "react-simple-code-editor": "^0.9.10",
     "react-table": "^6.9.2",

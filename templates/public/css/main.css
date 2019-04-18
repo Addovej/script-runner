@@ -98,3 +98,8 @@ h1, h2, h3, h4, h5, h6, p, ul {
 .h2-file-header {
     height: 100px;
 }
+
+#terminal {
+    width: 98vw;
+    height: 78vh;
+}
