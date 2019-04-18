@@ -31,9 +31,6 @@ export default class Header extends React.Component<Props, {}> {
                             <li className="nav-item ">
                                 <Link className="nav-link" to="/logs"> Logs </Link>
                             </li>
-                            <li className="nav-item ">
-                                <Link className="nav-link" to="/terminal"> Terminal </Link>
-                            </li>
                         </ul>
                     </div>
                 </nav>

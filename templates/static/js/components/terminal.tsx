@@ -5,7 +5,7 @@ import {MDBContainer, MDBRow} from "mdbreact";
 interface Props {
 }
 
-export default class XTerminal extends React.Component<Props> {
+export default class Terminal extends React.Component<Props> {
     constructor(props) {
         super(props);
     }
@@ -15,7 +15,7 @@ export default class XTerminal extends React.Component<Props> {
             <MDBContainer fluid>
                 <MDBRow className="main-content">
                     <Iframe
-                        url="http://127.0.0.1:8888"
+                        url="/wssh"
                         position="absolute"
                         id="terminal"
                     />

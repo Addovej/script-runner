@@ -5,6 +5,7 @@ import {filesystemAPI} from '../../api';
 import {FileHeader} from './fileHeader';
 import {FileRow} from './fileRow';
 import FileViewer from './fileViewer';
+import Terminal from '../terminal';
 
 interface State {
     files: FileEntity[];
@@ -14,6 +15,7 @@ interface State {
     fileName: string;
     fileContent: string;
     runMessage: string;
+    showTerminal: boolean;
 }
 
 interface Props {
@@ -29,7 +31,8 @@ export default class FilesPage extends React.Component<Props, State> {
             previousDir: '',
             fileName: '',
             fileContent: null,
-            runMessage: ''
+            runMessage: '',
+            showTerminal: false
         };
     }
 
@@ -76,7 +79,7 @@ export default class FilesPage extends React.Component<Props, State> {
 
 
     public render() {
-        const {currentDir, fileName, fileContent, rootDir, previousDir, files} = this.state;
+        const {currentDir, fileName, fileContent, rootDir, previousDir, files, showTerminal} = this.state;
 
         return (
             <MDBContainer fluid>
@@ -119,6 +122,17 @@ export default class FilesPage extends React.Component<Props, State> {
                             onRunClick={this.runScript}
                         />}
                     </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                    <div>
+                        <button
+                            onClick={() => {this.setState({showTerminal: !showTerminal})}}
+                            className='terminal-btn btn btn-primary'
+                        >
+                            Show/Hide Terminal
+                        </button>
+                        {showTerminal && <Terminal/>}
+                    </div>
                 </MDBRow>
             </MDBContainer>
         );

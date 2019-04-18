@@ -1,24 +1,23 @@
 class BaseCongig(object):
-    '''
-    Base config class
-    '''
+    """Base config class"""
+
     DEBUG = True
     TESTING = False
     ROOT_PATH = '/home/ctco/rootfolder'
+    SECRET_KEY = 'secret'
+    CMD = 'bash'
 
 
 class ProductionConfig(BaseCongig):
-    """
-    Production specific config
-    """
+    """Production specific config"""
+
     DEBUG = False
     ROOT_PATH = '/home/ctco/rootfolder'
 
 
 class DevelopmentConfig(BaseCongig):
-    """
-    Development environment specific configuration
-    """
+    """Development environment specific configuration"""
+
     DEBUG = True
     TESTING = True
     ROOT_PATH = '/home/ctco/rootfolder'
